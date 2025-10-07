@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", () => {
     gsap.to(loader, {
       opacity: 0,
-      duration: 1.8,
+      duration: 0.8,
       onComplete: () => {
         loader.style.display = "none";
         // Animate main content in
