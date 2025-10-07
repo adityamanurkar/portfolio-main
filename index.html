@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Manurkar - Portfolio</title>
+    
+    <!-- Tailwind CSS for rapid UI development -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Google Fonts: Inter for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS for advanced styling and theme management -->
+     <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <div id="loader">
+        <div class="loader">
+           <div class="animated-shape"></div>
+        </div>
+    </div>
+
+    <div class="background-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="header" class="sticky-nav bg">
+        <nav class="container mx-auto px-6 md:px-8 flex items-center justify-between">
+    <!-- Left side: Logo -->
+    <a href="#" class="text-2xl font-bold tracking-tight" style="color: var(--text-color)">
+        Aditya Manurkar
+    </a>
+
+    <!-- Right side: Desktop Nav + Hamburger -->
+    <div class="flex items-center space-x-6">
+        <!-- Desktop Nav Links (push them right) -->
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="hover:text-cyan-600 transition-colors">About</a>
+            <a href="#skills" class="hover:text-cyan-600 transition-colors">Skills</a>
+            <a href="#projects" class="hover:text-cyan-600 transition-colors">Projects</a>
+            <a href="#education" class="hover:text-cyan-600 transition-colors">Education</a>
+            <a href="#contact" class="hover:text-cyan-600 transition-colors">Contact</a>
+        </div>
+
+        <!-- Hamburger (only shows on mobile) -->
+        <div class="md:hidden">
+            <button id="hamburger-btn" class="hamburger z-50">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen" style="background: white; backdrop-filter: blur(12px);">
+            <div class="flex flex-col items-center justify-center h-full space-y-10 text-xl">
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#skills" class="mobile-link">Skills</a>
+                <a href="#projects" class="mobile-link">Projects</a>
+                <a href="#education" class="mobile-link">Education</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-8 py-12 relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[85vh] flex items-center">
+            <div class="max-w-4xl text-center mx-auto">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight hero-element">
+                   <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Aditya Manurkar</span>
+                </h1>
+                <p class="mt-4 text-2xl md:text-4xl font-bold hero-element" style="color: var(--text-color)">Full-Stack Java Developer</p>
+                <p class="mt-4 max-w-2xl mx-auto hero-element text-lg opacity-80">
+                    Passionate about building modern Java base web applications and continuously improving my skills in technology.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 hero-element">
+                    <a href="assets/adityaManurkarResume25.pdf" download class="btn btn-resume">
+                        <span class="btn-text">DOWNLOAD RESUME</span>
+                        <svg class="btn-icon w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                    </a>
+                    <div class="flex items-center space-x-5">
+                        <div class="tooltip-container">
+                          <a href="https://github.com/adityamanurkar" target="_blank" class="hover:text-cyan-600 transition-colors" aria-label="GitHub">
+                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                          </a>
+                          <span class="tooltip">GitHub</span>
+                        </div>
+                        <div class="tooltip-container">
+                          <a href="https://www.linkedin.com/in/aditya-manurkar-255090245/" target="_blank" class="hover:text-cyan-600 transition-colors" aria-label="LinkedIn">
+                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                          </a>
+                          <span class="tooltip">LinkedIn</span>
+                        </div>
+                        <div class="tooltip-container">
+                           <a href="https://www.instagram.com/theadityamanurkarr17" target="_blank" class="hover:text-cyan-600 transition-colors" aria-label="Instagram">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
+                            </a>
+                            <span class="tooltip">Instagram</span>
+                        </div>
+                        <div class="tooltip-container">
+                          <a href="https://www.linkedin.com/in/aditya-manurkar-255090245/" target="_blank" class="hover:text-cyan-600 transition-colors" aria-label="LeetCode">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.483 0a1.374 1.374 0 0 0 -.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0 -1.209 2.104 5.35 5.35 0 0 0 -.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0 -1.951-.003l-2.396 2.392a3.021 3.021 0 0 1 -4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0 -.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0 -1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0 -1.38-1.382z"/>
+    </svg>
+  </a>
+                          <span class="tooltip">LeetCode</span>
+                        </div>
+                        <div class="tooltip-container">
+                          <a href="mailto:adityamanurkar@gmail.com" class="hover:text-cyan-600 transition-colors" aria-label="Email">
+                             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                          </a>
+                          <span class="tooltip">Email</span>
+                        </div>
+                        <div class="tooltip-container">
+                          <a href="https://wa.me/7773950202" target="_blank" class="hover:text-cyan-600 transition-colors" aria-label="WhatsApp">
+                           <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                          </a>
+                          <span class="tooltip">WhatsApp</span>
+                        </div>
+                       </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24">
+            <div class="max-w-4xl mx-auto custom-card p-10 md:p-12 max-md:p-5 ">
+                <h2 class="section-header text-3xl font-bold text-center mb-8">ABOUT ME</h2>
+                <div class="text-left md:text-center text-lg space-y-4 opacity-90 max-md:text-base">
+                    <p class="about-text">
+                        Hi, I’m Aditya Manurkar, a passionate Full-Stack Java Developer with a strong enthusiasm for building modern and innovative web applications. I’ve compelted my Bachelor of Engineering(BE), in 2023, and I constantly push myself to grow as both a developer and a problem solver.
+                    </p>
+                    <p class="about-text">
+                        I strongly believe that technology is about continuous learning, and that’s why I make it a habit to explore new tools, frameworks, and trends in web development every single day. Whether it’s improving performance, experimenting with cutting-edge libraries, or mastering clean coding practices, I’m always excited to learn and apply my skills.
+                    </p>
+                    <p class="about-text">
+                        I have a keen interest in creating scalable, user-friendly, and visually appealing applications by combining powerful backend logic with modern frontend design. I regularly practice Data Structures and Algorithms on LeetCode to sharpen my problem-solving mindset, which helps me write optimized and efficient code.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <h2 class="section-header text-3xl font-bold text-center mb-16">TECH STACK</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                
+                <div class="skill-card custom-card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--primary)">Frontend</h3>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li>HTML & CSS</li>
+                        <li>JavaScript</li>
+                        <li>React.js</li>
+                        <li>Bootstrap</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+
+                 <div class="skill-card custom-card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--primary)">Backend</h3>
+                     <ul class="space-y-2 text-sm opacity-80">
+                        <li>Java</li>
+                        <li>SpringBoot</li>
+                        <li>Jsp</li>
+                        <li>Servlet</li>
+                        <li>Spring Core</li>
+                        <li>Microservices</li>
+                        <li>RESTFul API</li>
+                        <li>OOPS</li>
+                        <li>FileHandleing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card custom-card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--primary)">Databases</h3>
+                     <ul class="space-y-2 text-sm opacity-80">
+                        <li>MongoDB</li>
+                        <li>PostgreSQL</li>
+                        <li>MySql</li>
+                        <li>OracleSQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card custom-card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--primary)">Languages</h3>
+                     <ul class="space-y-2 text-sm opacity-80">
+                        <li>Core Java</li>
+                        <li>JavaScript</li>
+                        <li>C++</li>
+                        <li>Python</li>
+                        <li>YML</li>
+
+                    </ul>
+                </div>
+
+                <div class="skill-card custom-card p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--primary)">Tools</h3>
+                     <ul class="space-y-2 text-sm opacity-80">
+                        <li>Git & GitHub</li>
+                        <li>Spring AI</li>
+                        <li>Postman</li>
+                        <li>MS Excel</li>
+                        <li>AI Tools (chatGPT, Gemini)</li>
+                        <li>Power BI</li>
+                        <li>Docker</li>
+                        <li>Kubarnetes</li>
+                        <li>Excel</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <h2 class="section-header text-3xl font-bold text-center mb-16">PROJECTS</h2>
+            <div class="space-y-12">
+                <!-- Project 1 -->
+                <div class="project-container custom-card p-6 md:p-8">
+                    <div class="project-card grid md:grid-cols-2 gap-10 items-center">
+                        <div class="custom-card shadow-lg">
+                            <img src="/assets/Ai.png" class="w-full aspect-video object-cover rounded-lg">
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">Research Assistant – AI-Powered Knowledge Tool</h3>
+                            <p class="mb-4 opacity-80">A full-stack AI-powered research assistant built with Spring Boot (backend) and a Chrome Extension (frontend) for simplifying research, summarization, and note management. ext Summarization Generate concise summaries from long research text 💡 Suggestions & Insights AI-powered recommendations for related topics 📝 Research Notes Save, edit, and manage notes locally 🔍 Search & Filter Quickly search across saved research data ⚡ Spring Boot Backend REST APIs for AI integration & text processing 🎨 Frontend (Chrome Extension) Side-panel UI for summarization and note-taking 🐳 Docker Ready Containerized backend for easy deployment                               </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">CSS</span>
+                                <span class="tech-pill">SpringBoot</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4">
+                                
+                                <a href="https://github.com/adityamanurkar/Research-Assistant-Springboot-Ai" target="_blank" class="font-semibold flex items-center gap-1.5" style="color: var(--secondary)">
+                                    <span>GitHub</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 2 -->
+                <div class="project-container custom-card p-6 md:p-8">
+                    <div class="project-card grid md:grid-cols-2 gap-10 items-center">
+                         <div class="md:order-2 custom-card shadow-lg">
+                             <img src="/assets/Student-Management-System.png" class="w-full aspect-video object-cover rounded-lg">
+                         </div>
+                        <div class="md:order-1">
+                            <h3 class="text-2xl font-bold mb-3">Student Management System(JAVA - SPRINGBOOT)</h3>
+                            <p class="mb-4 opacity-80">
+                                Designed the backend in SpringBoot for this system, and programmed it using Eclipse. Design and manage the database schema. Implement data storage solutions and ensure efficient database interaction using ORM frameworks (Hibernate, JPA). Implemented CRUD operations for student data management. Focused on clean architecture and optimized query performance. Ensured scalability and maintainability through modular backend design.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                               <span class="tech-pill">Java</span>
+                               <span class="tech-pill">SpringBoot</span>
+                               <span class="tech-pill">OOPS</span>
+                               <span class="tech-pill">MySql</span>
+                               <span class="tech-pill">Postman</span>
+                               <span class="tech-pill">RESTFulAPI's</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4">
+                                
+                                <a href="https://github.com/adityamanurkar" target="_blank" class="font-semibold flex items-center gap-1.5" style="color: var(--secondary)">
+                                    <span>GitHub</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                </a>
+                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-24">
+            <h2 class="section-header text-3xl font-bold text-center mb-16">EDUCATION</h2>
+            <div class="relative max-w-2xl mx-auto border-l-2" style="border-color: var(--border-color)">
+                <div class="space-y-12">
+                    <!-- Education Item -->
+                    <!-- <div class="education-item pl-10 relative">
+                        <div class="absolute left-[-10px] top-1 w-5 h-5 border-2 rounded-full" style="background-color: var(--bg-color); border-color: var(--primary);"></div>
+                        <h3 class="text-xl font-bold">Master of Computer Applications (MCA)</h3>
+                        <p>RV Institute of Technology, Chebrolu</p>
+                        <p class="text-sm opacity-70">2024 – 2026 (Pursuing)</p>
+                    </div> -->
+                    <!-- Education Item -->
+                    <div class="education-item pl-10 relative">
+                         <div class="absolute left-[-10px] top-1 w-5 h-5 border-2 rounded-full" style="background-color: var(--bg-color); border-color: var(--primary);"></div>
+                        <h3 class="text-xl font-bold">Bachelor of Engineering (Computer Science)</h3>
+                        <p>Indira College Of Eng & Mang, Pune</p>
+                        <p class="text-sm opacity-70">2021 – 2023 | CGPA: 7.59</p>
+                    </div>
+                     <!-- Education Item -->
+                    <div class="education-item pl-10 relative">
+                         <div class="absolute left-[-10px] top-1 w-5 h-5 border-2 rounded-full" style="background-color: var(--bg-color); border-color: var(--primary);"></div>
+                        <h3 class="text-xl font-bold">Diploma (CS)</h3>
+                        <p>Yashwantrao Chavan Institute Of Polytechnique, Beed</p>
+                        <p class="text-sm opacity-70">2016 – 2020 | Percentage: 71%</p>
+                    </div> 
+                     <!-- Education Item -->
+                     <div class="education-item pl-10 relative">
+                         <div class="absolute left-[-10px] top-1 w-5 h-5 border-2 rounded-full" style="background-color: var(--bg-color); border-color: var(--primary);"></div>
+                        <h3 class="text-xl font-bold">SSC (Class X)</h3>
+                        <p>Champavati High School, Beed</p>
+                        <p class="text-sm opacity-70">2015 – 2016 | Percentage: 78%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+         <section id="contact" class="py-24">
+            <div class="max-w-2xl mx-auto custom-card p-8 md:p-10">
+                <div class="text-center">
+                    <h2 class="section-header text-3xl font-bold mb-4">GET IN TOUCH</h2>
+                </div>
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    <input type="hidden" name="access_key" value="7be80387-f7b5-4699-bda8-435c4451c446">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium opacity-80">Name</label>
+                            <input type="text" id="name" name="name" required class="form-input">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium opacity-80">Email</label>
+                            <input type="email" id="email" name="email" required class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2 text-sm font-medium opacity-80">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="form-input resize-none"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-full sm:w-auto">SEND MESSAGE</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 border-t" style="border-color: var(--border-color)">
+        <p class="opacity-70">&copy; 2025 Aditya Manurkar. All Rights Reserved.</p>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

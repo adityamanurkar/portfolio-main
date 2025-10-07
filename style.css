@@ -1,0 +1,277 @@
+       :root {
+            /* New Color Palette */
+            --bg-color: #f8f9fa; /* A very light, neutral background */
+            --text-color: #264653; /* Charcoal for text */
+            --primary: #2a9d8f;   /* Persian Green for primary actions */
+            --secondary: #e76f51; /* Burnt Sienna for accents */
+            --highlight1: #e9c46a; /* Saffron */
+            --highlight2: #f4a261; /* Sandy Brown */
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --nav-bg: rgba(248, 249, 250, 0.85);
+            --shape1: rgba(42, 157, 143, 0.1);
+            --shape2: rgba(231, 111, 81, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        /* Preloader Styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .animated-shape {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            animation: morph 3s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+                transform: rotate(0deg) scale(1);
+                background-color: var(--primary);
+            }
+            25% {
+                border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+                 background-color: var(--secondary);
+            }
+            50% {
+                border-radius: 50%;
+                transform: rotate(180deg) scale(0.8);
+                background-color: var(--highlight1);
+            }
+            75% {
+                 border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+                 background-color: var(--highlight2);
+            }
+            100% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+                transform: rotate(360deg) scale(1);
+                background-color: var(--primary);
+            }
+        }
+
+        /* Geometric Background Shapes */
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+        .shape1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            background: var(--shape1);
+        }
+        .shape2 {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            right: 10%;
+            background: var(--shape2);
+        }
+
+        /* Updated Card Style */
+        .custom-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sticky Navbar Styling */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Section header animation underline */
+        .section-header::after {
+            background-color: var(--primary);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Unique Resume Button */
+        .btn-resume {
+            background-color: var(--primary);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+         .btn-resume .btn-text {
+            transition: transform 0.3s ease;
+        }
+        .btn-resume .btn-icon {
+            transition: transform 0.3s ease;
+        }
+        .btn-resume:hover .btn-text {
+            transform: translateX(-5px);
+        }
+        .btn-resume:hover .btn-icon {
+            transform: translateX(5px);
+        }
+
+        .form-input {
+            width: 100%;
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.4);
+        }
+        
+        /* Modern Hamburger Menu */
+        .hamburger {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            cursor: pointer;
+            position: relative;
+        }
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Section header animation underline */
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            margin: 10px auto 0;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+        
+        .section-header.animate::after {
+            transform: scaleX(1);
+        }
+
+        /* Tech Stack Pills */
+        .tech-pill {
+            display: inline-block;
+            background-color: rgba(42, 157, 143, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Tooltip Styles */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+            padding: 4px 8px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            font-size: 0.75rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .tooltip-container:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
